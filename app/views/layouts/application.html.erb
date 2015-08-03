@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <nav>
+      <% if session[:user] %>
+        <a href="/sign_out"><%= session[:user]["username"] %>: sign out</a>
+      <% else %>
+        <a href="/sign_in">Sign in</a>
+        <a href="/sign_up">Sign up</a>
+      <% end %>
+    </nav>
 <%= yield %>
 
 </body>

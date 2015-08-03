@@ -1,5 +1,4 @@
 class FeedsController < ApplicationController
-  skip_before_action :authenticate
   def index
   end
 
@@ -20,5 +19,5 @@ class FeedsController < ApplicationController
 
   def destroy
   end
-  
+
 end

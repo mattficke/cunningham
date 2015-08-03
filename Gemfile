@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# roll your own password
+gem 'bcrypt'
 # instagram library
 gem 'instagram'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

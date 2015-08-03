@@ -1,3 +1,3 @@
-class User < ActiveRecord::Base
-  
+class User < ActiveRecord::based
+  has_many :feeds
 end

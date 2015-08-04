@@ -5,7 +5,7 @@
 <% end %>
 
 <ul>
-<% @feed.each do |photo| %>
+<% @feed.first(5).each do |photo| %>
   <li><%= image_tag photo.images.low_resolution.url %></li>
 <% end %>
 </ul>

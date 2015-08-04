@@ -1,1 +1,5 @@
-<button id="get">Get Location</button>
+<ul>
+<% @places.each do |place| %>
+  <li><%= link_to place.name, feed_path(place.id) %></li>
+<% end %>
+</ul>

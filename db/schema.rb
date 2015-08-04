@@ -17,13 +17,17 @@ ActiveRecord::Schema.define(version: 20150803135257) do
   enable_extension "plpgsql"
 
   create_table "feeds", force: :cascade do |t|
-    t.string "feed_url"
-    t.string "feed_name"
+    t.text    "feed"
+    t.string  "feed_name"
+    t.integer "user_id"
   end
+
+  add_index "feeds", ["user_id"], name: "index_feeds_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
   end
 
+  add_foreign_key "feeds", "users"
 end

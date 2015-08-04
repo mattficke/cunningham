@@ -11,7 +11,7 @@ function success(pos) {
   console.log('Latitude : ' + crd.latitude);
   console.log('Longitude: ' + crd.longitude);
   console.log('Accuracy: ' + crd.accuracy + ' meters.');
-  window.location.replace('/feeds/new/?lat='+ crd.latitude + '&lng=' + crd.longitude)
+  window.location.replace('/feeds/?lat='+ crd.latitude + '&lng=' + crd.longitude)
 };
 
 function error(err) {

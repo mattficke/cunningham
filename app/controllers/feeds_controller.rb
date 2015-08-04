@@ -5,6 +5,8 @@ class FeedsController < ApplicationController
   end
 
   def show
+    place_id = params[:id]
+    @media = Instagram.location_recent_media(place_id)
   end
 
   def new

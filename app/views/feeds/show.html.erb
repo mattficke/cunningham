@@ -1,0 +1,5 @@
+<ul>
+<% @media.each do |photo| %>
+  <li><%= image_tag photo.images.standard_resolution.url %></li>
+<% end %>
+</ul>

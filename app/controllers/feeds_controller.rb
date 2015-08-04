@@ -15,7 +15,6 @@ class FeedsController < ApplicationController
     @places = Instagram.location_search(lat, lng)
   end
 
-
   def create
 
   end

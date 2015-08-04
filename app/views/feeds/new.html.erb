@@ -1,7 +1,5 @@
-
-
 <ul>
 <% @places.each do |place| %>
-  <li><%= place.name %></li>
+  <li><%= link_to place.name, feed_path(place.id) %></li>
 <% end %>
 </ul>

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# pagination
+gem 'will_paginate'
 # manage environment variables
 gem 'figaro'
 # roll your own password

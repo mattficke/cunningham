@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20150803135257) do
   enable_extension "plpgsql"
 
   create_table "feeds", force: :cascade do |t|
-    t.text    "feed"
-    t.string  "feed_name"
+    t.integer "location"
+    t.string  "name"
     t.integer "user_id"
   end
 

@@ -1,3 +1,8 @@
+<%= form_tag "/feeds", method: "post" do %>
+  <input type="hidden" name="location" value="<%= @location.id %>">
+  <input type="hidden" name="name" value="<%= @location.name %>">
+  <input type="submit" value="Subscribe">
+<% end %>
 
 <ul>
 <% @feed.each do |photo| %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :feeds
 
+  get '/user/:id/feeds', to: 'feeds#index_user'
   get '/sign_in', to: 'users#sign_in'
   post '/sign_in', to: 'users#sign_in!'
   get '/sign_up', to: 'users#sign_up'

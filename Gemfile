@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# manage environment variables
+gem 'figaro'
 # roll your own password
 gem 'bcrypt'
 # instagram library

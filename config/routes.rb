@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :feeds
 
+  get '/callback', to: 'feeds#callback'
   get '/sign_in', to: 'users#sign_in'
   post '/sign_in', to: 'users#sign_in!'
   get '/sign_up', to: 'users#sign_up'

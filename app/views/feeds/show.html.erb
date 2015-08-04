@@ -6,6 +6,6 @@
 
 <ul>
 <% @feed.each do |photo| %>
-  <li><%= image_tag photo.images.standard_resolution.url %></li>
+  <li><%= image_tag photo.images.low_resolution.url %></li>
 <% end %>
 </ul>

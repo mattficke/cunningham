@@ -10,7 +10,7 @@ class FeedsController < ApplicationController
 
   def index_user
     @user = User.find(params[:id])
-    @feeds = @user.feeds
+    @feeds = @user.feeds.paginate(:page => params[:page], :per_page => 5)
     render 'users/index'
   end
 

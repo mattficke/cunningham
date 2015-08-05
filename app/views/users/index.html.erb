@@ -2,6 +2,11 @@
   <% @feeds.each do |feed| %>
   <div>
     <h2><%= feed.name %></h2>
+    <!-- <%= link_to "Edit Feed", edit_feed_path(feed)%> -->
+    <%= form_for feed, method: :delete do |f| %>
+      <input type="hidden", name="unsubscribe_id", value="<%= feed.id %>">
+      <%= f.submit "Unsubscribe" %>
+    <% end %>
     <% Instagram.location_recent_media(feed.location).first(3).each do |photo| %>
       <span><%= image_tag photo.images.low_resolution.url %></span>
     <% end %>

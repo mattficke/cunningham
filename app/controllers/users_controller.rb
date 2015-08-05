@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate
+  skip_before_action :authenticate, except: [:index]
+
   def index
   end
 
@@ -48,5 +49,5 @@ class UsersController < ApplicationController
     flash[:notice] = "You're signed out!"
     reset_session
     redirect_to root_url
-end
+  end
 end

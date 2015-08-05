@@ -6,11 +6,6 @@ var options = {
 
 function success(pos) {
   var crd = pos.coords;
-
-  console.log('Your current position is:');
-  console.log('Latitude : ' + crd.latitude);
-  console.log('Longitude: ' + crd.longitude);
-  console.log('Accuracy: ' + crd.accuracy + ' meters.');
   window.location.replace('/feeds/?lat='+ crd.latitude + '&lng=' + crd.longitude)
 };
 
@@ -22,7 +17,5 @@ $(document).ready(function() {
   $("#get").on("click", function() {
     // console.log("#get clicked")
     navigator.geolocation.getCurrentPosition(success, error, options);
-
-
   })
 })

@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Cunningham</title>
+  <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -14,9 +16,11 @@
       <% else %>
         <a href="/sign_in">Sign in</a>
         <a href="/sign_up">Sign up</a>
-      <% end %>      
+      <% end %>
     </nav>
-<button id="get">Get Location</button>
+<div class="location">
+  <button id="get">Get Location</button>
+</div>
 <%= yield %>
 
 </body>

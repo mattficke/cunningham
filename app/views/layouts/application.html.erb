@@ -8,7 +8,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= controller_name %> <%= action_name %>">
+<body>
+  <header>
+  <h1>Cunningham</h1>
   <nav>
       <% if session[:user] %>
         <a href="/sign_out"><%= session[:user]["username"] %>: sign out</a>
@@ -20,6 +22,7 @@
       <!-- <button id="get">Get Location</button> -->
       <a href="/feeds/new">Map!</a>
     </nav>
+  </header>
 
 <%= yield %>
 

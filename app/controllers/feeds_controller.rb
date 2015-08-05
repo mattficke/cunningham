@@ -3,9 +3,10 @@ class FeedsController < ApplicationController
   def index
     url = URI.parse(request.original_url)
     query = CGI.parse(url.query)
-    lat = query['lat'].first
-    lng = query['lng'].first
-    @places = Instagram.location_search(lat, lng)
+    lat = query['lat'].first.to_f.round(3)
+    lng = query['lng'].first.to_f.round(3)
+    puts lat
+    @places = Instagram.location_search(lat, lng, 5000)
   end
 
   def index_user
@@ -20,11 +21,6 @@ class FeedsController < ApplicationController
   end
 
   def new
-    # url = URI.parse(request.original_url)
-    # query = CGI.parse(url.query)
-    # lat = query['lat'].first
-    # lng = query['lng'].first
-    # @places = Instagram.location_search(lat, lng)
   end
 
   def create

@@ -8,7 +8,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
   <nav>
       <% if session[:user] %>
         <a href="/sign_out"><%= session[:user]["username"] %>: sign out</a>

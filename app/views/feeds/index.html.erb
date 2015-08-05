@@ -1,4 +1,13 @@
 <div>
+  <%= form_tag "/feeds", method: "post" do %>
+    <input type="hidden" name="latitude" value="<%= @lat %>">
+    <input type="hidden" name="longitude" value="<%= @lng %>">
+    <input type="hidden" name="radius" value="<%= @radius %>">
+    <input type="text" name="name" placeholder="Name This Location">
+    <input type="submit" value="Subscribe">
+  <% end %>
+</div>
+<div>
   <% @media.each do |media| %>
     <span><%= image_tag media.images.low_resolution.url %></span>
   <% end %>

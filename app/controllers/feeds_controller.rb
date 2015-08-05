@@ -49,7 +49,7 @@ class FeedsController < ApplicationController
 
   private
   def feed_params
-    params.permit(:location, :name)
+    params.permit(:latitude, :longitude, :radius, :name)
   end
 
 

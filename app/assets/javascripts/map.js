@@ -4,6 +4,7 @@ $(document).on('ready page:load', function(){
   // Create a map in the div #map
 
   var marker
+  var cir
   var map = L.mapbox.map('map', 'mattficke.6b6c9269');
 
   map.on("click", function(e) {
@@ -22,8 +23,10 @@ $(document).on('ready page:load', function(){
     // window.location.replace('/feeds/new/?lat='+ crd.latitude + '&lng=' + crd.longitude)
     if (!marker) {
       marker = L.marker(latlng).addTo(map);
+      cir = L.circle(latlng, 1000).addTo(map);
     } else {
       marker.setLatLng(latlng);
+      cir.setLatLng(latlng);
     };
     var markerLocation = marker.getLatLng();
     console.log(markerLocation.lat)

@@ -1,3 +1,9 @@
+<div>
+  <% @media.each do |media| %>
+    <span><%= image_tag media.images.low_resolution.url %></span>
+  <% end %>
+</div>
+
 <ul>
 <% @places.each do |place| %>
   <li><%= link_to place.name, feed_path(place.id) %></li>

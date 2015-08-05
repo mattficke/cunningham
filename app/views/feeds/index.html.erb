@@ -9,12 +9,11 @@
 </div>
 <div>
   <% @media.each do |media| %>
-    <span><%= image_tag media.images.low_resolution.url %></span>
+    <span><%= link_to image_path media.images.standard_resolution.url do%>
+            <%= image_tag media.images.low_resolution.url %>
+          <% end %>
+    </span>
   <% end %>
 </div>
 
 <ul>
-<% @places.each do |place| %>
-  <li><%= link_to place.name, feed_path(place.id) %></li>
-<% end %>
-</ul>

@@ -6,7 +6,7 @@ class FeedsController < ApplicationController
     @lat = query['lat'].first.to_f.round(3)
     @lng = query['lng'].first.to_f.round(3)
     @radius = query['radius'].first
-    @places = Instagram.location_search(@lat, @lng, 5000)
+    # @places = Instagram.location_search(@lat, @lng, 5000)
     @media = Instagram.media_search(@lat, @lng, :distance => @radius)
   end
 
@@ -17,8 +17,8 @@ class FeedsController < ApplicationController
   end
 
   def show
-    @location = Instagram.location(params[:id])
-    @feed = Instagram.location_recent_media(@location.id)
+    @feed = Feed.find(params[:id])
+    @media = Instagram.media_search(@feed.latitude, @feed.longitude, :distance => @feed.radius)
   end
 
   def new

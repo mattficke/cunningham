@@ -22,7 +22,6 @@ $(document).on('ready page:load', function(){
     // window.location.replace('/feeds/new/?lat='+ crd.latitude + '&lng=' + crd.longitude)
     if (!marker) {
       marker = L.marker(latlng).addTo(map);
-      map.setZoom(14)
     } else {
       marker.setLatLng(latlng);
     };
@@ -40,6 +39,7 @@ $(document).on('ready page:load', function(){
     var latlng = L.latLng(crd.latitude, crd.longitude)
     console.log(crd.latitude);
     console.log(crd.longitude);
+    map.setZoom(14)
     setMarker(latlng);
   };
 

@@ -5,8 +5,9 @@ class FeedsController < ApplicationController
     query = CGI.parse(url.query)
     @lat = query['lat'].first.to_f.round(3)
     @lng = query['lng'].first.to_f.round(3)
+    @radius = query['radius'].first
     @places = Instagram.location_search(@lat, @lng, 5000)
-    @media = Instagram.media_search(@lat, @lng)
+    @media = Instagram.media_search(@lat, @lng, :distance => @radius)
   end
 
   def index_user

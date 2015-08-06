@@ -1,18 +1,28 @@
-<div>
-  <%= form_tag "/feeds", method: "post" do %>
-    <input type="hidden" name="latitude" value="<%= @lat %>">
-    <input type="hidden" name="longitude" value="<%= @lng %>">
-    <input type="hidden" name="radius" value="<%= @radius %>">
-    <input type="text" name="name" placeholder="Name This Location">
-    <input type="submit" value="Subscribe">
-  <% end %>
+<div class="container">
+  <div class="fixed">
+    <button id="get">Get Location</button>
+    <div class="subscribe">
+      <%= form_tag "/feeds", method: "post" do %>
+        <input type="hidden" name="latitude" value="<%= @lat %>">
+        <input type="hidden" name="longitude" value="<%= @lng %>">
+        <input type="hidden" name="radius" value="<%= @radius %>">
+        <input type="text" name="name" placeholder="Name This Location">
+        <input type="submit" value="Subscribe">
+      <% end %>
+    </div>
+    <div id='map'></div>
+  </div>
 </div>
-<div>
-  <% @media.each do |media| %>
-    <span><%= link_to image_path media.images.standard_resolution.url do%>
-            <%= image_tag media.images.low_resolution.url %>
-          <% end %></span>
-  <% end %>
+<div class="container">
+  <div class="photo-map">
+    <div class="row">
+      <div class="col-md-12">
+        <% @media.each do |media| %>
+          <%= link_to image_path media.images.standard_resolution.url, :class => "thumbnail" do%>
+                  <%= image_tag media.images.low_resolution.url %>
+                <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<ul>

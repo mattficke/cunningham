@@ -14,21 +14,31 @@
  *= require_self
  */
  body {
-   margin:0; padding:0;
+   padding-top: 65px;
  }
 
 #map {
-  height: 400px;
-  width: 50%;
+  height: 600px;
   margin: 0 auto;
 }
 
-header {
-  height: 10em;
-  background: #eeeeee;
-  margin-top: -1.5em;
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 1em;
+  width: 40%;
+  z-index: 1;
 }
 
-h1 {
-  padding-top: 1em;
+.photo-map {
+  margin-left: 40%;
+}
+
+#get {
+  display: inline-block;
+}
+
+.subscribe {
+  display: inline-block;
+  margin-left: 50em;
 }

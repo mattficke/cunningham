@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= csrf_meta_tags %>
   <title>Cunningham</title>
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+
   <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
   <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+
 </head>
 <body>
-  <header>
-  <h1>Cunningham</h1>
-  <nav>
-      <% if session[:user] %>
-        <a href="/sign_out"><%= session[:user]["username"] %>: sign out</a>
-        <a href="/user/<%= session[:user]['id']%>/feeds">View Feeds</a>
-      <% else %>
-        <a href="/sign_in">Sign in</a>
-        <a href="/sign_up">Sign up</a>
-      <% end %>
-      <!-- <button id="get">Get Location</button> -->
-      <a href="/feeds/new">Map!</a>
-    </nav>
-  </header>
-
-<%= yield %>
-
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Cunningham</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <% if session[:user] %>
+            <li><a href="/sign_out"><%= session[:user]["username"] %>: sign out</a></li>
+            <li><a href="/user/<%= session[:user]['id']%>/feeds">View Feeds</a></li>
+          <% else %>
+            <li><a href="/sign_in">Sign in</a></li>
+            <li><a href="/sign_up">Sign up</a></li>
+          <% end %>
+          <li><a href="/feeds/new">Map!</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+  <%= yield %>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -9,6 +9,13 @@
 <div class="container">
   <div class="photo-map">
     <h1><%= @feed.name %></h1>
+    <%= link_to edit_feed_path do %>
+      <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
+    <%= form_for @feed, method: :delete do |f| %>
+      <input type="hidden", name="unsubscribe_id", value="<%= @feed.id %>">
+      <%= f.submit "Unsubscribe" %>
+    <% end %>
     <div class="row">
       <div class="col-md-12">
         <% @media.each do |media| %>

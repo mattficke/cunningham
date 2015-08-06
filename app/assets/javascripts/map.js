@@ -21,6 +21,18 @@ $(document).on('ready page:load', function(){
     var location = L.latLng(url.searchObject["lat"], url.searchObject["lng"]);
     setMarker(location);
   }
+  // Initialise the FeatureGroup to store editable layers
+  // var drawnItems = new L.FeatureGroup();
+  // map.addLayer(drawnItems);
+
+  // Initialise the draw control and pass it the FeatureGroup of editable layers
+  // var drawControl = new L.Control.Draw({
+  //     edit: {
+  //         featureGroup: drawnItems
+  //     }
+  // });
+  // map.addControl(drawControl);
+  // var shape = new L.Draw.Circle(map, drawControl.options.polyline).enable();
   //   console.log(2)
   //   // var latlng = L.latLng(38.904, -77.016);
   //   console.log(3)
@@ -29,6 +41,10 @@ $(document).on('ready page:load', function(){
 
   map.on("click", function(e) {
     console.log(e.latlng);
+
+    // shape.addTo(map);
+    // console.log(shape)
+    // cir = L.circle(e.latlng, shape.radius).addTo(map);
     setMarker(e.latlng)
   })
 

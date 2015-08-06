@@ -25,12 +25,11 @@
         <ul class="nav navbar-nav">
           <% if session[:user] %>
             <li><a href="/sign_out"><%= session[:user]["username"] %>: sign out</a></li>
-            <li><a href="/user/<%= session[:user]['id']%>/feeds">View Feeds</a></li>
+            <li><a href="/user/<%= session[:user]['id']%>/feeds">View Your Locations</a></li>
           <% else %>
             <li><a href="/sign_in">Sign in</a></li>
             <li><a href="/sign_up">Sign up</a></li>
           <% end %>
-          <li><a href="/feeds/new">Map!</a></li>
       </ul>
       </div>
     </div>

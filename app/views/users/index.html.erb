@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <% @feeds.each do |feed| %>
   <div>
     <h2><%= link_to feed.name, feed_path(feed) %></h2>
@@ -7,7 +7,7 @@
       <input type="hidden", name="unsubscribe_id", value="<%= feed.id %>">
       <%= f.submit "Unsubscribe" %>
     <% end %>
-    <% Instagram.media_search(feed.latitude, feed.longitude, :distance => feed.radius).first(4).each do |photo| %>
+    <% Instagram.media_search(feed.latitude, feed.longitude, :distance => feed.radius).first(3).each do |photo| %>
       <span><%= image_tag photo.images.low_resolution.url %></span>
     <% end %>
   </div>

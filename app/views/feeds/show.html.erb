@@ -1,4 +1,5 @@
-<div>
+<div class="container">
+  <h1><%= @feed.name %></h1>
   <% @media.each do |media| %>
     <span><%= link_to image_path media.images.standard_resolution.url do%>
             <%= image_tag media.images.low_resolution.url %>

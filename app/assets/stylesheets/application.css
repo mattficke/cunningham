@@ -24,7 +24,7 @@
 
 .fixed {
   position: fixed;
-  top: 0;
+  top: 65px;
   left: 1em;
   width: 40%;
   z-index: 1;
@@ -40,5 +40,5 @@
 
 .subscribe {
   display: inline-block;
-  margin-left: 50em;
+  /*margin-left: 50em;*/
 }

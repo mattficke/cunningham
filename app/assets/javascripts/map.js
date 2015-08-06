@@ -1,13 +1,31 @@
 $(document).on('ready page:load', function(){
   // Provide your access token
   L.mapbox.accessToken = 'pk.eyJ1IjoibWF0dGZpY2tlIiwiYSI6ImJkN2FkOTFjNDM4OGQzNWUyYzY3NjU4ODM4ZDYwNDJmIn0.FLniij4ORShXSqRe6pcw-A';
-  var marker
-  var cir
+
   // Create a map in the div #map
   var map = L.mapbox.map('map', 'mattficke.6b6c9269')
       .addControl(L.mapbox.geocoderControl('mapbox.places', {
         autocomplete: true
       }));
+
+  var marker
+  var cir
+  var latlng = L.latLng(38.8975, -77.0367);
+  map.setZoom(14)
+  setMarker(latlng);
+  //
+  if (window.location.href.indexOf("?") >= 0) {
+    var url = parseURL(window.location.href)
+    console.log(url)
+    console.log(1)
+    var location = L.latLng(url.searchObject["lat"], url.searchObject["lng"]);
+    setMarker(location);
+  }
+  //   console.log(2)
+  //   // var latlng = L.latLng(38.904, -77.016);
+  //   console.log(3)
+  //   // console.log(latlng)
+  // }
 
   map.on("click", function(e) {
     console.log(e.latlng);
@@ -19,6 +37,30 @@ $(document).on('ready page:load', function(){
     timeout: 5000,
     maximumAge: 0
   };
+
+  function parseURL(url) {
+    var parser = document.createElement('a'),
+        searchObject = {},
+        queries, split, i;
+    // Let the browser do the work
+    parser.href = url;
+    // Convert query string to object
+    queries = parser.search.replace(/^\?/, '').split('&');
+    for( i = 0; i < queries.length; i++ ) {
+        split = queries[i].split('=');
+        searchObject[split[0]] = split[1];
+    }
+    return {
+        protocol: parser.protocol,
+        host: parser.host,
+        hostname: parser.hostname,
+        port: parser.port,
+        pathname: parser.pathname,
+        search: parser.search,
+        searchObject: searchObject,
+        hash: parser.hash
+    };
+}
 
   function setMarker(latlng) {
     // window.location.replace('/feeds/new/?lat='+ crd.latitude + '&lng=' + crd.longitude)
@@ -51,6 +93,7 @@ $(document).on('ready page:load', function(){
   function error(err) {
     alert('ERROR(' + err.code + '): ' + err.message);
   };
+
   $("#get").on("click", function() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   })

@@ -1,7 +1,7 @@
 <div class="container">
   <% @feeds.each do |feed| %>
   <div>
-    <h2><%= link_to feed.name, feed_path(feed) %></h2>
+    <h2><%= link_to feed.name, feed_path(feed, :lat => feed.latitude, :lng => feed.longitude, :radius => feed.radius) %></h2>
     <!-- <%= link_to "Edit Feed", edit_feed_path(feed)%> -->
     <%= form_for feed, method: :delete do |f| %>
       <input type="hidden", name="unsubscribe_id", value="<%= feed.id %>">

@@ -1,8 +1,22 @@
 <div class="container">
-  <h1><%= @feed.name %></h1>
-  <% @media.each do |media| %>
-    <span><%= link_to image_path media.images.standard_resolution.url do%>
-            <%= image_tag media.images.low_resolution.url %>
-          <% end %></span>
-  <% end %>
+  <div class="fixed">
+    <button id="get">Get Location</button>
+
+    <div id='map'></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="photo-map">
+    <h1><%= @feed.name %></h1>
+    <div class="row">
+      <div class="col-md-12">
+        <% @media.each do |media| %>
+          <%= link_to image_path media.images.standard_resolution.url, :class => "thumbnail" do%>
+                  <%= image_tag media.images.low_resolution.url %>
+                <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

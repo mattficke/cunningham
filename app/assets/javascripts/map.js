@@ -5,7 +5,10 @@ $(document).on('ready page:load', function(){
 
   var marker
   var cir
-  var map = L.mapbox.map('map', 'mattficke.6b6c9269');
+  var map = L.mapbox.map('map', 'mattficke.6b6c9269')
+      .addControl(L.mapbox.geocoderControl('mapbox.places', {
+        autocomplete: true
+      }));
 
   map.on("click", function(e) {
     console.log(e.latlng);

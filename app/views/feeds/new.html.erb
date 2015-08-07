@@ -1,2 +1,33 @@
-<button id="get">Get Location</button>
-<div id='map'></div>
+<div class="container">
+  <div class="fixed">
+    <button id="get">Get Location</button>
+
+    <div id='map'></div>
+  </div>
+</div>
+<div class="container">
+  <div class="photo-map">
+    <% if session[:user] %>
+    <div class="subscribe">
+      <%= form_for @feed, method: "post" do |f|  %>
+        <%= f.hidden_field :latitude, :value => @lat %>
+        <%= f.hidden_field :longitude, :value => @lng %>
+        <%= f.hidden_field :radius, :value => @radius %>
+        <%= f.text_field :name, :placeholder => "Name This Location" %>
+        <%= f.submit "Subscribe" %>
+      <% end %>
+    </div>
+    <% else %>
+      <p><%= link_to "Create an account to save this location!", sign_up_path%></p>
+    <% end %>
+    <div class="row">
+      <div class="col-md-12">
+        <% @media.each do |media| %>
+          <%= link_to image_path media.images.standard_resolution.url, :class => "thumbnail" do%>
+                  <%= image_tag media.images.low_resolution.url %>
+                <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

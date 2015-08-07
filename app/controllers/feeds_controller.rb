@@ -1,6 +1,7 @@
 class FeedsController < ApplicationController
   skip_before_action :authenticate, only: [:index, :show, :new]
   def index
+    @feed = Feed.new
     url = URI.parse(request.original_url)
     query = CGI.parse(url.query)
     @lat = query['lat'].first.to_f.round(3)
@@ -51,5 +52,5 @@ class FeedsController < ApplicationController
   def feed_params
     params.require(:feed).permit(:latitude, :longitude, :radius, :name)
   end
-  
+
 end

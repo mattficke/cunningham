@@ -9,12 +9,17 @@
   <div class="photo-map">
     <% if session[:user] %>
     <div class="subscribe">
-      <%= form_tag "/feeds", method: "post" do %>
-        <input type="hidden" name="latitude" value="<%= @lat %>">
-        <input type="hidden" name="longitude" value="<%= @lng %>">
-        <input type="hidden" name="radius" value="<%= @radius %>">
-        <input type="text" name="name" placeholder="Name This Location">
-        <input type="submit" value="Subscribe">
+      <%= form_for @feed, method: "post" do |f|  %>
+        <%= f.hidden_field :latitude, :value => @lat %>
+        <!-- <input type="hidden" name="latitude" value="<%= @lat %>"> -->
+        <%= f.hidden_field :longitude, :value => @lng %>
+        <!-- <input type="hidden" name="longitude" value="<%= @lng %>"> -->
+        <%= f.hidden_field :radius, :value => @radius %>
+        <!-- <input type="hidden" name="radius" value="<%= @radius %>"> -->
+        <%= f.text_field :name, :placeholder => "Name This Location" %>
+        <!-- <input type="text" name="name" placeholder="Name This Location"> -->
+        <%= f.submit "Subscribe" %>
+        <!-- <input type="submit" value="Subscribe"> -->
       <% end %>
     </div>
     <% else %>

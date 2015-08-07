@@ -1,20 +1,8 @@
 class FeedsController < ApplicationController
   skip_before_action :authenticate, only: [:index, :show, :new]
   def index
-    @feed = Feed.new
-    url = URI.parse(request.original_url)
-    query = CGI.parse(url.query)
-    @lat = query['lat'].first.to_f.round(3)
-    @lng = query['lng'].first.to_f.round(3)
-    @radius = query['radius'].first
-    # @places = Instagram.location_search(@lat, @lng, 5000)
-    @media = Instagram.media_search(@lat, @lng, :distance => @radius)
-  end
-
-  def index_user
     @user = User.find(params[:id])
     @feeds = @user.feeds.paginate(:page => params[:page], :per_page => 5)
-    render 'users/index'
   end
 
   def show
@@ -23,6 +11,14 @@ class FeedsController < ApplicationController
   end
 
   def new
+    @feed = Feed.new
+    url = URI.parse(request.original_url)
+    query = CGI.parse(url.query)
+    @lat = query['lat'].first.to_f.round(3)
+    @lng = query['lng'].first.to_f.round(3)
+    @radius = query['radius'].first
+    # @places = Instagram.location_search(@lat, @lng, 5000)
+    @media = Instagram.media_search(@lat, @lng, :distance => @radius)
   end
 
   def create

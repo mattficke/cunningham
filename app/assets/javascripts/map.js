@@ -86,13 +86,13 @@ $(document).on('ready page:load', function(){
     } else {
       marker.setLatLng(latlng);
       cir.setLatLng(latlng);
-    };
+    }
     var markerLocation = marker.getLatLng();
     var cirRadius = cir.getRadius();
-    console.log(markerLocation.lat)
-    console.log(markerLocation.lng)
-    var link = '<a href="/feeds/?lat='+ markerLocation.lat + '&lng=' + markerLocation.lng+ '&radius=' + cirRadius + '">Go There</a>'
-    console.log(link)
+    console.log(markerLocation.lat);
+    console.log(markerLocation.lng);
+    var link = '<a href="/feeds/new/?lat='+ markerLocation.lat + '&lng=' + markerLocation.lng+ '&radius=' + cirRadius + '">Go There</a>';
+    console.log(link);
     marker.bindPopup(link).openPopup();
     map.setView(latlng);
   }

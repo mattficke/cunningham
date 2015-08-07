@@ -1,33 +1,17 @@
 <div class="container">
-  <div class="fixed">
-    <button id="get">Get Location</button>
-
-    <div id='map'></div>
-  </div>
-</div>
-<div class="container">
-  <div class="photo-map">
-    <% if session[:user] %>
-    <div class="subscribe">
-      <%= form_tag "/feeds", method: "post" do %>
-        <input type="hidden" name="latitude" value="<%= @lat %>">
-        <input type="hidden" name="longitude" value="<%= @lng %>">
-        <input type="hidden" name="radius" value="<%= @radius %>">
-        <input type="text" name="name" placeholder="Name This Location">
-        <input type="submit" value="Subscribe">
-      <% end %>
-    </div>
-    <% else %>
-      <p><%= link_to "Create an account to save this location!", sign_up_path%></p>
+  <% @feeds.each do |feed| %>
+  <div>
+    <h2><%= link_to feed.name, feed_path(feed, :lat => feed.latitude, :lng => feed.longitude, :radius => feed.radius) %></h2>
+    <!-- <%= link_to "Edit Feed", edit_feed_path(feed)%> -->
+    <%= form_for feed, method: :delete do |f| %>
+      <input type="hidden", name="unsubscribe_id", value="<%= feed.id %>">
+      <%= f.submit "Unsubscribe" %>
     <% end %>
-    <div class="row">
-      <div class="col-md-12">
-        <% @media.each do |media| %>
-          <%= link_to image_path media.images.standard_resolution.url, :class => "thumbnail" do%>
-                  <%= image_tag media.images.low_resolution.url %>
-                <% end %>
-        <% end %>
-      </div>
-    </div>
+    <% Instagram.media_search(feed.latitude, feed.longitude, :distance => feed.radius).first(3).each do |photo| %>
+      <span><%= image_tag photo.images.low_resolution.url %></span>
+    <% end %>
   </div>
+  <% end %>
+
+  <%= will_paginate @feeds %>
 </div>

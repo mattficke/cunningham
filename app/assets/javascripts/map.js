@@ -16,35 +16,12 @@ $(document).on('ready page:load', function(){
   //
   if (window.location.href.indexOf("?") >= 0) {
     var url = parseURL(window.location.href)
-    console.log(url)
-    console.log(1)
     var location = L.latLng(url.searchObject["lat"], url.searchObject["lng"]);
     setMarker(location);
   }
-  // Initialise the FeatureGroup to store editable layers
-  // var drawnItems = new L.FeatureGroup();
-  // map.addLayer(drawnItems);
-
-  // Initialise the draw control and pass it the FeatureGroup of editable layers
-  // var drawControl = new L.Control.Draw({
-  //     edit: {
-  //         featureGroup: drawnItems
-  //     }
-  // });
-  // map.addControl(drawControl);
-  // var shape = new L.Draw.Circle(map, drawControl.options.polyline).enable();
-  //   console.log(2)
-  //   // var latlng = L.latLng(38.904, -77.016);
-  //   console.log(3)
-  //   // console.log(latlng)
-  // }
 
   map.on("click", function(e) {
     console.log(e.latlng);
-
-    // shape.addTo(map);
-    // console.log(shape)
-    // cir = L.circle(e.latlng, shape.radius).addTo(map);
     setMarker(e.latlng)
   })
 
@@ -76,10 +53,9 @@ $(document).on('ready page:load', function(){
         searchObject: searchObject,
         hash: parser.hash
     };
-}
+  }
 
   function setMarker(latlng) {
-    // window.location.replace('/feeds/new/?lat='+ crd.latitude + '&lng=' + crd.longitude)
     if (!marker) {
       marker = L.marker(latlng).addTo(map);
       cir = L.circle(latlng, 1000).addTo(map);

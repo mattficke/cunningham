@@ -9,3 +9,5 @@ Registration is not necessary to use the site, but registered users have the abi
 * The site does not yet allow you to change the radius of the search. Users should be able to specify a radius of between 1 and 5000 meters.
 
 * There is not full separation of concerns in the models, views, and controllers. In particular, there is an API call in the `feeds/index` view that should be moved to the controller if at all possible.
+
+* The layout does not work well on mobile

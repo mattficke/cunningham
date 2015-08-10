@@ -11,3 +11,7 @@ Registration is not necessary to use the site, but registered users have the abi
 * There is not full separation of concerns in the models, views, and controllers. In particular, there is an API call in the `feeds/index` view that should be moved to the controller if at all possible.
 
 * The layout does not work well on mobile
+
+* User authentication needs to be tightened up. Right now it doesn't ask for password confirmation, and doesn't display any info about what went wrong if there was an error during registration or sign-in
+
+* Signing up should also sign you in, this shouldn't be two steps

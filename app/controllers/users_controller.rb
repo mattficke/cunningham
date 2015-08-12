@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate, except: [:index]
-
+# user auth looks great
   def index
   end
 

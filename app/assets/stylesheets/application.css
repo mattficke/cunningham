@@ -17,6 +17,10 @@
    padding-top: 65px;
  }
 
+ img {
+   max-width: 100%;
+ }
+
 #map {
   height: 600px;
   margin: 0 auto;

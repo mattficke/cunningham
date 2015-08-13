@@ -6,8 +6,9 @@ $(document).on('ready page:load', function(){
   var map = L.mapbox.map('map', 'mattficke.6b6c9269')
       .addControl(L.mapbox.geocoderControl('mapbox.places', {
         autocomplete: true,
-        zoomControl: false
+        // zoomControl: false
       }));
+  
   // disable scrollwheel zoom on mobile
   if (window.matchMedia("(max-width: 40em)").matches) {
     map.scrollWheelZoom.disable();

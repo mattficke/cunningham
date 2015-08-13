@@ -8,9 +8,10 @@ $(document).on('ready page:load', function(){
         autocomplete: true,
         zoomControl: false
       }));
-  // disable scrollwheel zoom
-  map.scrollWheelZoom.disable();
-
+  // disable scrollwheel zoom on mobile
+  if (window.matchMedia("(max-width: 40em)").matches) {
+    map.scrollWheelZoom.disable();
+  }
   var marker
   var cir
   var latlng = L.latLng(38.8975, -77.0367);
@@ -21,7 +22,11 @@ $(document).on('ready page:load', function(){
     var url = parseURL(window.location.href)
     var location = L.latLng(url.searchObject["lat"], url.searchObject["lng"]);
     setMarker(location);
-    $("html, body").animate({ scrollTop: $(".photo-map").offset().top });
+    // auto scroll to photos on mobile
+    if (window.matchMedia("(max-width: 40em)").matches) {
+      $("html, body").animate({ scrollTop: $(".photo-map").offset().top });
+    }
+
   }
 
   map.on("click", function(e) {

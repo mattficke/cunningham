@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
       redirect_to '/sign_in'
     end
   end
+
+  def get_query_strings
+    url = URI.parse(request.original_url)
+    query = CGI.parse(url.query)
+    return query
+  end
 end

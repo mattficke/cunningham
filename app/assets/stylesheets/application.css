@@ -22,7 +22,7 @@
  }
 
 #map {
-  height: 600px;
+  height: 60vh;
   margin: 0 auto;
 }
 
@@ -47,7 +47,7 @@
   /*margin-left: 50em;*/
 }
 
-@media (max-width: 40em) {
+@media (max-width: 42em) {
   .fixed, .container, body, html {
     position: static;
     overflow-x: hidden;

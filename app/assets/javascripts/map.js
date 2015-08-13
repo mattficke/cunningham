@@ -11,7 +11,7 @@ $(document).on('ready page:load', function(){
 
   // disable scrollwheel zoom on mobile
   // FIXME: doesn't update if browser is resized without a refresh. A "change" event listener could fix.
-  if (window.matchMedia("(max-width: 40em)").matches) {
+  if (window.matchMedia("(max-width: 42em)").matches) {
     map.scrollWheelZoom.disable();
   }
   var marker
@@ -25,7 +25,7 @@ $(document).on('ready page:load', function(){
     var location = L.latLng(url.searchObject["lat"], url.searchObject["lng"]);
     setMarker(location);
     // auto scroll to photos on mobile
-    if (window.matchMedia("(max-width: 40em)").matches) {
+    if (window.matchMedia("(max-width: 42em)").matches) {
       $("html, body").animate({ scrollTop: $(".photo-map").offset().top - 50 });
     }
 

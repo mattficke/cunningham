@@ -5,8 +5,11 @@ $(document).on('ready page:load', function(){
   // Create a map in the div #map
   var map = L.mapbox.map('map', 'mattficke.6b6c9269')
       .addControl(L.mapbox.geocoderControl('mapbox.places', {
-        autocomplete: true
+        autocomplete: true,
+        zoomControl: false
       }));
+  // disable scrollwheel zoom
+  map.scrollWheelZoom.disable();
 
   var marker
   var cir
@@ -18,18 +21,13 @@ $(document).on('ready page:load', function(){
     var url = parseURL(window.location.href)
     var location = L.latLng(url.searchObject["lat"], url.searchObject["lng"]);
     setMarker(location);
+    $("html, body").animate({ scrollTop: $(".photo-map").offset().top });
   }
 
   map.on("click", function(e) {
     console.log(e.latlng);
     setMarker(e.latlng)
   })
-
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
 
   function parseURL(url) {
     var parser = document.createElement('a'),
@@ -72,6 +70,12 @@ $(document).on('ready page:load', function(){
     marker.bindPopup(link).openPopup();
     map.setView(latlng);
   }
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
 
   function success(pos) {
     var crd = pos.coords;

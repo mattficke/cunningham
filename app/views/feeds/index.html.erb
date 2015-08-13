@@ -1,5 +1,5 @@
 <div class="container">
-  <% @feeds.each do |feed| %>
+  <% @feeds.each_with_index do |feed, i| %>
   <div>
     <h2><%= link_to feed.name, feed_path(feed, :lat => feed.latitude, :lng => feed.longitude, :radius => feed.radius) %></h2>
     <%= form_for feed, method: :delete do |f| %>
@@ -7,7 +7,7 @@
       <%= f.submit "Unsubscribe" %>
     <% end %>
     <%# FIXME: this api call should really be in the controller %>
-    <% Instagram.media_search(feed.latitude, feed.longitude, :distance => feed.radius).first(3).each do |photo| %>
+    <% @medias[i].first(3).each do |photo| %>
       <span><%= image_tag photo.images.low_resolution.url %></span>
     <% end %>
   </div>

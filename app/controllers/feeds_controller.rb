@@ -6,17 +6,20 @@ class FeedsController < ApplicationController
   def index
     @user = User.find(params[:id])
     @feeds = @user.feeds.paginate(:page => params[:page], :per_page => 5)
+    @medias = @feeds.map do |feed|
+      Instagram.media_search(feed.latitude, feed.longitude, :distance => feed.radius)
+    end
   end
 
   def show
     @feed = Feed.find(params[:id])
+    @oembed = Array.new
     @media = Instagram.media_search(@feed.latitude, @feed.longitude, :distance => @feed.radius)
   end
 
   def new
     @feed = Feed.new
-    url = URI.parse(request.original_url)
-    query = CGI.parse(url.query)
+    query = get_query_strings
     @lat = query['lat'].first.to_f.round(3)
     @lng = query['lng'].first.to_f.round(3)
     @radius = query['radius'].first

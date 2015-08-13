@@ -6,7 +6,7 @@ class FeedsController < ApplicationController
   def index
     @user = User.find(params[:id])
     @feeds = @user.feeds.paginate(:page => params[:page], :per_page => 5)
-    @medias = @feeds.map do |feed|
+    @media = @feeds.map do |feed|
       Instagram.media_search(feed.latitude, feed.longitude, :distance => feed.radius)
     end
   end

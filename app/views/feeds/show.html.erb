@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-12">
         <% @media.each do |media| %>
-          <%= link_to image_path media.images.standard_resolution.url, :class => "thumbnail" do%>
+          <%= link_to image_path media.link, :class => "thumbnail" do%>
                   <%= image_tag media.images.low_resolution.url %>
                 <% end %>
         <% end %>

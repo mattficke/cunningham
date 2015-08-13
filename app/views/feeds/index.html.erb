@@ -7,8 +7,10 @@
       <%= f.submit "Unsubscribe" %>
     <% end %>
     <%# FIXME: this api call should really be in the controller %>
-    <% @medias[i].first(3).each do |photo| %>
-      <span><%= image_tag photo.images.low_resolution.url %></span>
+    <% @media[i].first(3).each do |media| %>
+      <%= link_to image_path media.link do %>
+        <span><%= image_tag media.images.low_resolution.url %></span>
+      <% end %>
     <% end %>
   </div>
   <% end %>

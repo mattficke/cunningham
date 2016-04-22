@@ -1,9 +1,11 @@
 class FeedsController < ApplicationController
+  ## This Instagram.media_search, I'm wondering if we can create a ruby wrapper for some stuff. There's alot of logic happening in the controller. Really we want to isolate the logic in controllers really only to be database query type of stuff
   before_action :authorize
   skip_before_action :authenticate, only: [:index, :show, :new]
   skip_before_action :authorize, except: [:edit, :update, :destroy]
 
   def index
+    # very cool using will_paginate gem
     @user = User.find(params[:id])
     @feeds = @user.feeds.paginate(:page => params[:page], :per_page => 5)
     @media = @feeds.map do |feed|

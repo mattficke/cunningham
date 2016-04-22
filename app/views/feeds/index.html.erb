@@ -6,6 +6,7 @@
       <input type="hidden", name="unsubscribe_id", value="<%= feed.id %>">
       <%= f.submit "Unsubscribe" %>
     <% end %>
+    <!-- i would say not only that, but maybe potentially in a model! -->
     <%# FIXME: this api call should really be in the controller %>
     <% @media[i].first(3).each do |media| %>
       <%= link_to image_path media.link do %>

@@ -30,7 +30,7 @@ $(document).on('ready page:load', function(){
     }
 
   }
-
+// nice little click event, was wondering how you were setting the marker
   map.on("click", function(e) {
     console.log(e.latlng);
     setMarker(e.latlng)
@@ -72,6 +72,7 @@ $(document).on('ready page:load', function(){
     var cirRadius = cir.getRadius();
     console.log(markerLocation.lat);
     console.log(markerLocation.lng);
+    // this is a cool way to set a link to create a new feed.
     var link = '<a href="/feeds/new/?lat='+ markerLocation.lat + '&lng=' + markerLocation.lng+ '&radius=' + cirRadius + '">Go There</a>';
     console.log(link);
     marker.bindPopup(link).openPopup();
@@ -96,7 +97,7 @@ $(document).on('ready page:load', function(){
   function error(err) {
     alert('ERROR(' + err.code + '): ' + err.message);
   };
-
+// hmm curious what this click even does. I think i figured out succes/error, curious about options, just an object?
   $("#get").on("click", function() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   })
